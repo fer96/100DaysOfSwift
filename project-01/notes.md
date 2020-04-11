@@ -14,6 +14,7 @@
 
 * @State: allows us to work around the limitation of structs: we know we can’t change their properties because structs are fixed, but @State allows that value to be stored separately by SwiftUI in a place that can be modified. 
 * Apple recommends we add private access control to those properties
+* SwiftUI’s views are a function of their state – when the state changes, the views automatically update to match.
 
 ## Binding state to user interface controls
 
@@ -22,3 +23,7 @@
 ## Creating views in a loop
 
 * ForEach: doesn’t get hit by the 10-view limit that would affect us if we had typed the views by hand.
+
+## Extra Resources
+
+* [C-style format specifiers](https://en.wikipedia.org/wiki/Printf_format_string)
