@@ -13,44 +13,50 @@ struct ContentView: View {
 	@State private var correctAnswer = Int.random(in: 0...2)
 	@State private var showingScore = false
 	@State private var scoreTitle = ""
+	@State private var totalScore = 0
 	
 	var body: some View {
 		ZStack {
 			LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
 			
-			VStack(spacing: 30) {
-				VStack{
-					Text("Tap the flag of").foregroundColor(.white)
-					Text(countries[correctAnswer])
-						.foregroundColor(.white)
-						.font(.largeTitle)
-						.fontWeight(.black)
-				}
-				
-				ForEach(0 ..< 3) { number in
-					Button(action: {
-						self.flagTap(number)
-					}) {
-							Image(self.countries[number])
-								.renderingMode(.original)
-								.clipShape(Capsule())
-								.overlay(Capsule().stroke(Color.black, lineWidth: 1))
-								.shadow(color: .black, radius: 2.0)
+			HStack {
+				VStack(spacing: 30) {
+						VStack{
+							Text("Tap the flag of").foregroundColor(.white)
+							Text(countries[correctAnswer])
+								.foregroundColor(.white)
+								.font(.largeTitle)
+								.fontWeight(.black)
+						}
+						
+						ForEach(0 ..< 3) { number in
+							Button(action: {
+								self.flagTap(number)
+							}) {
+									Image(self.countries[number])
+										.renderingMode(.original)
+										.clipShape(Capsule())
+										.overlay(Capsule().stroke(Color.black, lineWidth: 1))
+										.shadow(color: .black, radius: 2.0)
+							}
+						}
+						
+						Text("Score: \(totalScore)").foregroundColor(.white)
+						Spacer()
 					}
 				}
-				Spacer()
+				.alert(isPresented: $showingScore) { () -> Alert in
+					Alert(title: Text(scoreTitle), message: Text("Your score is: \(totalScore)"), dismissButton: .default(Text("Continue"), action: self.askQuestion))
 			}
-		}
-		.alert(isPresented: $showingScore) { () -> Alert in
-			Alert(title: Text(scoreTitle), message: Text("Your score is"), dismissButton: .default(Text("Continue"), action: self.askQuestion))
 		}
 	}
 	
 	func flagTap(_ number: Int) {
 		if number == correctAnswer {
 			scoreTitle = "Correct"
+			totalScore += 1
 		} else {
-			scoreTitle = "Wrong"
+			scoreTitle = "Wrong! This flag is from \(countries[number])"
 		}
 		
 		showingScore = true
