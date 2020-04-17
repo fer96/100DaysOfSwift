@@ -56,7 +56,7 @@ struct ContentView: View {
         }
         
         Section(header: Text("Total amount for the check")) {
-          Text("$\(bills[0], specifier: "%.2f")")
+					Text("$\(bills[0], specifier: "%.2f")").foregroundColor(tipPercentages[tipPercentage] == 0 ? .red : .black)
         }
       }
       .navigationBarTitle("WeSplit")
