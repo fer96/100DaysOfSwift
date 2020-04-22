@@ -15,6 +15,7 @@ struct ContentView: View {
 	@State private var errorTitle = ""
 	@State private var errorMessage = ""
 	@State private var showingError = false
+	@State private var score = 10
 }
 
 // MARK: - View
@@ -31,10 +32,19 @@ extension ContentView {
 					Image(systemName: "\($0.count).circle")
 					Text($0)
 				}
+				
+				/// Score
+				Section(header: Text("Your score")) {
+					Text("\(score) pts")
+				}
 			}
 			/// Title
 				.navigationBarTitle(rootWord)
 				.onAppear(perform: startGame)
+			.navigationBarItems(leading:
+				Button("Restart Game") {
+					self.startGame()
+			})
 			
 			/// Alert
 				.alert(isPresented: $showingError) { () -> Alert in
@@ -51,15 +61,18 @@ extension ContentView {
 		guard !answer.isEmpty else {
 			return
 		}
-		guard isOriginal(word: answer) else {
+		guard isOriginal(word: answer), answer != rootWord else {
+			calculateScore()
 			wordError(title: "Word used already", message: "Be more original")
 			return
 		}
 		guard isPossible(word: answer) else {
+			calculateScore()
 			wordError(title: "Word not recognized", message: "You can't just make them up")
 			return
 		}
 		guard isReal(word: answer) else {
+			calculateScore()
 			wordError(title: "Word not possible", message: "That isn't a real word")
 			return
 		}
@@ -74,6 +87,8 @@ extension ContentView {
 			
 			let allWords = startWords.components(separatedBy: "\n")
 			rootWord = allWords.randomElement() ?? "silkworm"
+			
+			score = 10
 			return
 		}
 		
@@ -99,6 +114,9 @@ extension ContentView {
 	}
 	
 	func isReal(word: String) -> Bool {
+		guard word.count > 3 else {
+			return false
+		}
 		let checker = UITextChecker()
 		let range = NSRange(location: 0, length: word.utf16.count)
 		let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
@@ -110,6 +128,13 @@ extension ContentView {
 		errorTitle = title
 		errorMessage = message
 		showingError = true
+	}
+	
+	/// User has 10 pts by default for each mistake score is equal score minus one
+	func calculateScore() {
+		if score > 0 {
+			score -= 1
+		}
 	}
 }
 
