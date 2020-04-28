@@ -27,3 +27,11 @@
 ## Archiving Swift objects with Codable
 
 * We need use __Codable__ protocol and __encode__ method from __JSONEncoder__ instance
+
+## Review
+
+* @Published publishes change announcements automatically.
+* @ObservedObject watches for those announcements and refreshes any views using the object.
+* sheet() watches a condition we specify and shows or hides a view automatically.
+* Codable can convert Swift objects into JSON and back with almost no code from us.
+* UserDefaults can read and write data so that we can save settings and more instantly.

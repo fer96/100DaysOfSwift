@@ -13,6 +13,7 @@
 		4C187D892457601A00DA9B47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C187D882457601A00DA9B47 /* Assets.xcassets */; };
 		4C187D8C2457601A00DA9B47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C187D8B2457601A00DA9B47 /* Preview Assets.xcassets */; };
 		4C187D8F2457601A00DA9B47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C187D8D2457601A00DA9B47 /* LaunchScreen.storyboard */; };
+		4C187D992458A9C100DA9B47 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C187D982458A9C000DA9B47 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4C187D8B2457601A00DA9B47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C187D8E2457601A00DA9B47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C187D902457601A00DA9B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C187D982458A9C000DA9B47 /* AddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		4C187D812457601700DA9B47 /* iExpense */ = {
 			isa = PBXGroup;
 			children = (
+				4C187D982458A9C000DA9B47 /* AddView.swift */,
 				4C187D822457601700DA9B47 /* AppDelegate.swift */,
 				4C187D842457601700DA9B47 /* SceneDelegate.swift */,
 				4C187D862457601700DA9B47 /* ContentView.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C187D992458A9C100DA9B47 /* AddView.swift in Sources */,
 				4C187D832457601700DA9B47 /* AppDelegate.swift in Sources */,
 				4C187D852457601700DA9B47 /* SceneDelegate.swift in Sources */,
 				4C187D872457601700DA9B47 /* ContentView.swift in Sources */,
