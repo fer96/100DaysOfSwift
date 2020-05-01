@@ -9,7 +9,21 @@
 import SwiftUI
 
 struct AstronautView: View {
+	let missions: [Mission] = Bundle.main.decode("missions.json")
 	let astronaut: Astronaut
+	
+	var flewMissions: [String] {
+		var missionNames = [String]()
+		for mission in missions {
+			for member in mission.crew {
+				if member.name == astronaut.id {
+					missionNames.append(mission.displayName)
+				}
+			}
+		}
+		
+		return missionNames
+	}
 	
 	var body: some View {
 		GeometryReader { geometry in
@@ -19,6 +33,10 @@ struct AstronautView: View {
 						.resizable()
 						.scaledToFit()
 						.frame(width: geometry.size.width)
+					
+					ForEach(self.flewMissions, id: \.self) {
+						Text($0)
+					}
 					
 					Text(self.astronaut.description)
 						.padding()
