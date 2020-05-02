@@ -14,3 +14,13 @@
 ## Adding strokeBorder() support with InsettableShape
 
 * Swift strokes the inside of the circle rather than centering on the line.
+* InsettableShape. This is a shape that can be inset – reduced inwards – by a certain amount to produce another shape.
+
+## Transforming shapes using CGAffineTransform and even-odd fills
+
+* CGAffineTransform measures angles in radians rather than degrees
+* Rotating something then moving it does not produce the same result as moving then rotating
+
+## Enabling high-performance Metal rendering with drawingGroup()
+
+* __drawingGroup()__ modifier is helpful to know about and to keep in your arsenal as a way to solve performance problems when you hit them, but you should not use it that often. Adding the off-screen render pass might slow down SwiftUI for simple drawing
