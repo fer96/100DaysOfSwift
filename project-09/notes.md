@@ -24,3 +24,12 @@
 ## Enabling high-performance Metal rendering with drawingGroup()
 
 * __drawingGroup()__ modifier is helpful to know about and to keep in your arsenal as a way to solve performance problems when you hit them, but you should not use it that often. Adding the off-screen render pass might slow down SwiftUI for simple drawing
+
+## Special effects in SwiftUI
+
+* Blend modes allow us to control the way one view is rendered on top of another. The default mode is __.normal__
+* __Multiply__ is so named because it multiplies each source pixel color with the destination pixel color – in our case, each pixel of the image and each pixel of the rectangle on top
+* Using __multiply__ with a solid color applies a really common tint effect: blacks stay black
+
+* __screen__, which does the opposite of multiply: it inverts the colors, performs a multiply, then inverts them again, resulting in a brighter image rather than a darker image.
+* SwiftUI’s adaptive colors that are designed to look good in both dark mode and light mode, so they are a custom blend of red, green, and blue rather than pure shades
