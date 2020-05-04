@@ -69,18 +69,57 @@ struct Checkerboard: Shape {
 	}
 }
 
-struct ContentView: View {
-	@State private var rows = 4
-	@State private var columns = 4
+// MARK: - Challenge
 
+/*
+Draw an arrow in a square
+*/
+struct Arrow: Shape {
+	var insetAmount: CGFloat
+	
+	var animatableData: CGFloat {
+			get { insetAmount }
+			set { self.insetAmount = newValue }
+	}
+	
+	func path(in rect: CGRect) -> Path {
+		let center = CGPoint(x: rect.midX, y: rect.midY)
+		let half = insetAmount * 0.5
+		let quarter = half * 0.5
+		let eighth = quarter * 0.5
+		
+		var path = Path()
+		
+		/// Point
+		path.move(to: CGPoint(x: center.x, y: rect.maxY))
+		path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY - rect.midY * half))
+		path.addLine(to: CGPoint(x: center.x, y: rect.maxY - rect.midY * quarter))
+		path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - rect.midY * half))
+		path.addLine(to: CGPoint(x: center.x, y: rect.maxY))
+		
+		/// Line
+		path.addLine(to: CGPoint(x: center.x - rect.midX * eighth, y: rect.maxY - rect.midY * quarter))
+		path.addLine(to: CGPoint(x: center.x - rect.midX * eighth, y: rect.midY))
+		path.addLine(to: CGPoint(x: center.x + rect.midX * eighth, y: rect.midY))
+		path.addLine(to: CGPoint(x: center.x + rect.midX * eighth, y: rect.maxY - rect.midY * quarter))
+		
+		return path
+	}
+}
+
+struct ContentView: View {
+	@State private var inset: CGFloat = 1.0
+	
 	var body: some View {
-		Checkerboard(rows: rows, columns: columns)
-			.onTapGesture {
-					withAnimation(.linear(duration: 3)) {
-						self.rows = 8
-						self.columns = 16
-					}
-			}
+		VStack {
+			/// Arrow
+			Arrow(insetAmount: inset)
+				//.frame(width: 300, height: 300)
+			
+			/// Slider
+			Slider(value: $inset, in: 1...4, step: 0.1)
+				.padding([.horizontal, .bottom])
+		}
 	}
 }
 
