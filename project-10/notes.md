@@ -15,7 +15,3 @@
   * Handle the result of that networking task.
 
 * it’s a much better idea to fetch your data in the background, decode it from JSON in the background, then actually update the property on the main thread to avoid any potential for problems
-
-## Validating and disabling forms
-
-* a
