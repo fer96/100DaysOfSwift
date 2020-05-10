@@ -15,3 +15,7 @@
   * Handle the result of that networking task.
 
 * it’s a much better idea to fetch your data in the background, decode it from JSON in the background, then actually update the property on the main thread to avoid any potential for problems
+
+## Extra
+
+* Really helpful website called [https://reqres.in] – it lets us send any data we want, and will automatically send it back. This is a great way of prototyping network code, because you’ll get real data back from whatever you send
