@@ -23,11 +23,11 @@ enum CodingKeys: CodingKey {
 class Order: ObservableObject {
 	/// Order Data
 	static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
-	@Published var type = 0
-	@Published var quantity = 3
-	@Published var extraFrosting = false
-	@Published var addSprinkles = false
-	@Published var specialRequestEnabled = false {
+	var type = 0
+	var quantity = 3
+	var extraFrosting = false
+	var addSprinkles = false
+	var specialRequestEnabled = false {
 		didSet {
 			if specialRequestEnabled == false {
 				extraFrosting = false
@@ -37,49 +37,49 @@ class Order: ObservableObject {
 	}
 	
 	/// Address data
-	@Published var name = ""
-	@Published var streetAddress = ""
-	@Published var city = ""
-	@Published var zip = ""
+	var name = ""
+	var streetAddress = ""
+	var city = ""
+	var zip = ""
 	var hasValidAddress: Bool {
-		if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
-			return false
+		if inputValid(name) || inputValid(streetAddress) || inputValid(city) || inputValid(zip) {
+			return true
 		}
-		return true
+		return false
 	}
 	
 	/// Checkout data
 	var cost: Double {
 		// $2 per cake
 		var cost = Double(quantity) * 2
-		
+
 		// complicated cakes cost more
 		cost += (Double(type) / 2)
-		
+
 		// $1/cake for extra frosting
 		if extraFrosting {
 			cost += Double(quantity)
 		}
-		
+
 		// $0.50/cake for sprinkles
 		if addSprinkles {
 			cost += Double(quantity) / 2
 		}
-		
+
 		return cost
 	}
 	
 	/// Initializer
 	init() {}
-	
+
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		
+
 		type = try container.decode(Int.self, forKey: .type)
 		quantity = try container.decode(Int.self, forKey: .quantity)
 		extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
 		addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
-		
+
 		name = try container.decode(String.self, forKey: .name)
 		streetAddress = try container.decode(String.self, forKey: .streetAddress)
 		city = try container.decode(String.self, forKey: .city)
@@ -102,5 +102,13 @@ extension Order: Codable {
 			try container.encode(streetAddress, forKey: .streetAddress)
 			try container.encode(city, forKey: .city)
 			try container.encode(zip, forKey: .zip)
+	}
+}
+
+
+// MARK: - Private methods
+extension Order {
+	private func inputValid(_ input: String) -> Bool {
+		return !input.isEmpty && input.first != " "
 	}
 }

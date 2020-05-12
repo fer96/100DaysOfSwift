@@ -14,6 +14,7 @@ struct CheckoutView: View {
 	
 	@State private var confirmationMessage = ""
 	@State private var showingConfirmation = false
+	@State private var titleAlert = ""
 }
 
 // MARK: - Logic
@@ -32,7 +33,15 @@ extension CheckoutView {
 		
 		URLSession.shared.dataTask(with: request) { data, response, error in
 			guard let data = data else {
-				print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+				guard let error = error else {
+					self.confirmationMessage = "No data no error"
+					self.titleAlert = "Error!"
+					self.showingConfirmation = true
+					return
+				}
+				self.confirmationMessage = error.localizedDescription
+				self.titleAlert = "Error!"
+				self.showingConfirmation = true
 				return
 			}
 			
@@ -71,7 +80,7 @@ extension CheckoutView {
 			
 			/// Alert
 			.alert(isPresented: $showingConfirmation) {
-				Alert(title: Text("Thank you!"), message: Text(confirmationMessage), dismissButton: .default(Text("OK")))
+				Alert(title: Text(titleAlert), message: Text(confirmationMessage), dismissButton: .default(Text("OK")))
 		}
 	}
 }
