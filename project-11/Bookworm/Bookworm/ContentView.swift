@@ -8,10 +8,42 @@
 
 import SwiftUI
 
-// MARK: - View
+// MARK: - Properties
 struct ContentView: View {
+	/// Create enviroment to manage Cora Data
+	@Environment(\.managedObjectContext) var moc
+	/// Create fetch request for all Books objects in Core Data
+	@FetchRequest(entity: Book.entity(), sortDescriptors: []) var books: FetchedResults<Book>
+	
+	@State private var showingAddScreen = false
+}
+
+// MARK: - View
+extension ContentView {
 	var body: some View {
-		Text("A")
+		NavigationView {
+			List {
+				ForEach(books, id: \.self) { book in
+					NavigationLink(destination: Text(book.title ?? "Unkown tillte")) {
+						EmojiRatingView(rating: book.rating).font(.largeTitle)
+						
+						VStack(alignment: .leading) {
+							Text(book.title ?? "Unkown title").font(.headline)
+							Text(book.author ?? "Unknown Author").foregroundColor(.secondary)
+						}
+					}
+				}
+			}
+			.navigationBarTitle("Bookworm")
+			.navigationBarItems(trailing: Button(action: {
+				self.showingAddScreen.toggle()
+			}) {
+				Image(systemName: "plus")
+			})
+				.sheet(isPresented: $showingAddScreen) {
+					AddBookView().environment(\.managedObjectContext, self.moc)
+			}
+		}
 	}
 }
 

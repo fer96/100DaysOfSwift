@@ -24,3 +24,4 @@
 * Core Data is an object graph and persistence framework
   * Which is a fancy way of saying it lets us define objects and properties of those objects, then lets us read and write them from permanent storage
 * In Core Data __entities__ are like classes or structs and __attributes__ are their properties
+* __@FetchRequest__ it’s another property wrapper this fetch request stays up to date over time, so that as Objects are created or removed our UI stays synchronized
