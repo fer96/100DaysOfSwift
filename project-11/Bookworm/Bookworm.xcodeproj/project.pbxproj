@@ -18,6 +18,7 @@
 		4C410F31246DB38300105BB4 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C410F30246DB38300105BB4 /* AddBookView.swift */; };
 		4C410F33246DB88500105BB4 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C410F32246DB88500105BB4 /* RatingView.swift */; };
 		4C410F35246DBC7F00105BB4 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C410F34246DBC7F00105BB4 /* EmojiRatingView.swift */; };
+		4CC808D2246EE27C0092FBF6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC808D1246EE27C0092FBF6 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4C410F30246DB38300105BB4 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		4C410F32246DB88500105BB4 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4C410F34246DBC7F00105BB4 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
+		4CC808D1246EE27C0092FBF6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				4C410F30246DB38300105BB4 /* AddBookView.swift */,
 				4C410F17246C3FCE00105BB4 /* AppDelegate.swift */,
 				4C410F1E246C3FCE00105BB4 /* ContentView.swift */,
+				4CC808D1246EE27C0092FBF6 /* DetailView.swift */,
 				4C410F34246DBC7F00105BB4 /* EmojiRatingView.swift */,
 				4C410F2E246C7A6900105BB4 /* Introduction.swift */,
 				4C410F32246DB88500105BB4 /* RatingView.swift */,
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C410F18246C3FCE00105BB4 /* AppDelegate.swift in Sources */,
+				4CC808D2246EE27C0092FBF6 /* DetailView.swift in Sources */,
 				4C410F31246DB38300105BB4 /* AddBookView.swift in Sources */,
 				4C410F2F246C7A6900105BB4 /* Introduction.swift in Sources */,
 				4C410F1D246C3FCE00105BB4 /* Bookworm.xcdatamodeld in Sources */,

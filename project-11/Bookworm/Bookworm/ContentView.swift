@@ -13,9 +13,26 @@ struct ContentView: View {
 	/// Create enviroment to manage Cora Data
 	@Environment(\.managedObjectContext) var moc
 	/// Create fetch request for all Books objects in Core Data
-	@FetchRequest(entity: Book.entity(), sortDescriptors: []) var books: FetchedResults<Book>
+	@FetchRequest(entity: Book.entity(), sortDescriptors: [
+			NSSortDescriptor(keyPath: \Book.title, ascending: true),
+			NSSortDescriptor(keyPath: \Book.author, ascending: true)
+	]) var books: FetchedResults<Book>
 	
 	@State private var showingAddScreen = false
+}
+
+// MARK: - Logic
+extension ContentView {
+	func deleteBooks(at offsets: IndexSet) {
+		for offset in offsets {
+			// find this book in our fetch request
+			let book = books[offset]
+			// delete it from the context
+			moc.delete(book)
+		}
+		// save the context
+		try? moc.save()
+	}
 }
 
 // MARK: - View
@@ -24,7 +41,7 @@ extension ContentView {
 		NavigationView {
 			List {
 				ForEach(books, id: \.self) { book in
-					NavigationLink(destination: Text(book.title ?? "Unkown tillte")) {
+					NavigationLink(destination: DetailView(book: book)) {
 						EmojiRatingView(rating: book.rating).font(.largeTitle)
 						
 						VStack(alignment: .leading) {
@@ -33,9 +50,10 @@ extension ContentView {
 						}
 					}
 				}
+				.onDelete(perform: deleteBooks)
 			}
 			.navigationBarTitle("Bookworm")
-			.navigationBarItems(trailing: Button(action: {
+			.navigationBarItems(leading: EditButton(), trailing: Button(action: {
 				self.showingAddScreen.toggle()
 			}) {
 				Image(systemName: "plus")

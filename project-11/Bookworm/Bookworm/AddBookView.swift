@@ -45,8 +45,6 @@ extension AddBookView {
 						RatingView(rating: $rating)
 						TextField("Write a review", text: $review)
 					}
-					
-					TextField("Write a review", text: $review)
 				}
 				
 				Section {
