@@ -24,6 +24,13 @@ struct AddBookView: View {
 	let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
 }
 
+// MARK: - Logic
+extension AddBookView {
+	func checkBookInformation() -> Bool {
+		title.isEmpty && author.isEmpty && genre.isEmpty && review.isEmpty
+	}
+}
+
 // MARK: - View
 extension AddBookView {
 	var body: some View {
@@ -55,10 +62,11 @@ extension AddBookView {
 						newBook.rating = Int16(self.rating)
 						newBook.genre = self.genre
 						newBook.review = self.review
+						newBook.date = Date()
 						
 						try? self.moc.save()
 						self.presentationMode.wrappedValue.dismiss()
-					}
+					}.disabled(checkBookInformation())
 				}
 			}
 			.navigationBarTitle("Add Book")

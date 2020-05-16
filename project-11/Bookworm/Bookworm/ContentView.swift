@@ -45,7 +45,9 @@ extension ContentView {
 						EmojiRatingView(rating: book.rating).font(.largeTitle)
 						
 						VStack(alignment: .leading) {
-							Text(book.title ?? "Unkown title").font(.headline)
+							Text(book.title ?? "Unkown title")
+								.font(.headline)
+								.foregroundColor(book.rating < 2 ? .red : .black)
 							Text(book.author ?? "Unknown Author").foregroundColor(.secondary)
 						}
 					}

@@ -16,6 +16,12 @@ struct DetailView: View {
 	@State private var showingDeleteAlert = false
 	
 	let book: Book
+	
+	static let taskDateFormat: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .long
+		return formatter
+	}()
 }
 
 // MARK: - Logic
@@ -52,8 +58,9 @@ extension DetailView {
 					.font(.title)
 					.foregroundColor(.secondary)
 				
-				Text(self.book.review ?? "No review")
-					.padding()
+				Text(self.book.review ?? "No review").padding()
+				
+				Text("\(self.book.date ?? Date(), formatter: Self.taskDateFormat)").padding()
 				
 				RatingView(rating: .constant(Int(self.book.rating)))
 					.font(.largeTitle)
