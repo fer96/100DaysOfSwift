@@ -14,6 +14,9 @@
 		4CC809102470AB6E0092FBF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC8090F2470AB6E0092FBF6 /* Assets.xcassets */; };
 		4CC809132470AB6E0092FBF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC809122470AB6E0092FBF6 /* Preview Assets.xcassets */; };
 		4CC809162470AB6E0092FBF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC809142470AB6E0092FBF6 /* LaunchScreen.storyboard */; };
+		4CC8091F2470AF6B0092FBF6 /* Singer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8091D2470AF6B0092FBF6 /* Singer+CoreDataClass.swift */; };
+		4CC809202470AF6B0092FBF6 /* Singer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8091E2470AF6B0092FBF6 /* Singer+CoreDataProperties.swift */; };
+		4CC809222470B0240092FBF6 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC809212470B0240092FBF6 /* FilteredList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		4CC809122470AB6E0092FBF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4CC809152470AB6E0092FBF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC809172470AB6E0092FBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CC8091D2470AF6B0092FBF6 /* Singer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4CC8091E2470AF6B0092FBF6 /* Singer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4CC809212470B0240092FBF6 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +67,10 @@
 				4CC809172470AB6E0092FBF6 /* Info.plist */,
 				4CC809062470AB690092FBF6 /* AppDelegate.swift */,
 				4CC8090D2470AB690092FBF6 /* ContentView.swift */,
+				4CC809212470B0240092FBF6 /* FilteredList.swift */,
 				4CC809082470AB690092FBF6 /* SceneDelegate.swift */,
+				4CC8091D2470AF6B0092FBF6 /* Singer+CoreDataClass.swift */,
+				4CC8091E2470AF6B0092FBF6 /* Singer+CoreDataProperties.swift */,
 				4CC8090F2470AB6E0092FBF6 /* Assets.xcassets */,
 				4CC8090A2470AB690092FBF6 /* CoreDataProject.xcdatamodeld */,
 				4CC809142470AB6E0092FBF6 /* LaunchScreen.storyboard */,
@@ -150,9 +159,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC809072470AB690092FBF6 /* AppDelegate.swift in Sources */,
+				4CC809202470AF6B0092FBF6 /* Singer+CoreDataProperties.swift in Sources */,
 				4CC809092470AB690092FBF6 /* SceneDelegate.swift in Sources */,
+				4CC8091F2470AF6B0092FBF6 /* Singer+CoreDataClass.swift in Sources */,
 				4CC8090E2470AB690092FBF6 /* ContentView.swift in Sources */,
 				4CC8090C2470AB690092FBF6 /* CoreDataProject.xcdatamodeld in Sources */,
+				4CC809222470B0240092FBF6 /* FilteredList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
