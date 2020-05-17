@@ -9,17 +9,25 @@
 import SwiftUI
 import CoreData
 
+// MARK: - Predicates
+enum Predicate: String {
+	case BEGINSWITH
+	case CONTAINS
+}
+
 // MARK: - Properties
 struct ContentView: View {
 	@Environment(\.managedObjectContext) var moc
 	@State private var lastNameFilter = "A"
+	
+	let sortedByNameDescending = NSSortDescriptor(keyPath: \Singer.firstName, ascending: false)
 }
 
 // MARK: - View
 extension ContentView {
 	var body: some View {
 		VStack {
-			FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+			FilteredList(filterKey: "lastName", predicate: .BEGINSWITH, filterValue: lastNameFilter, sortDescriptors: [sortedByNameDescending]) { (singer: Singer) in
 				Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
 			}
 			
@@ -35,6 +43,10 @@ extension ContentView {
 				let adele = Singer(context: self.moc)
 				adele.firstName = "Adele"
 				adele.lastName = "Adkins"
+				
+				let robert = Singer(context: self.moc)
+				robert.firstName = "Robert"
+				robert.lastName = "Adkins"
 				
 				try? self.moc.save()
 			}
