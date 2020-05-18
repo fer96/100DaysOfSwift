@@ -30,6 +30,10 @@ extension ContentView {
 					}
 					return
 				}
+			} else {
+				guard let _ = error else { return }
+				/// Something was wrong
+				
 			}
 		}.resume()
 	}
