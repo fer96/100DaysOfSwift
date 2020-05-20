@@ -14,30 +14,17 @@ import CoreImage.CIFilterBuiltins
 struct ContentView: View {
 	@State private var image: Image?
 	@State private var showingImagePicker = false
+	@State private var inputImage: UIImage?
 }
 
 // MARK: - Logic
 extension ContentView {
 	func loadImage() {
-		guard let inputImage = UIImage(named: "example") else { return }
-		let beginImage = CIImage(image: inputImage)
-		let context = CIContext()
+		guard let inputImage = inputImage else { return }
+		image = Image(uiImage: inputImage)
 		
-		let currentFilter = CIFilter.pixellate()
-		currentFilter.inputImage = beginImage
-		currentFilter.scale = 10
-		
-		// get a CIImage from our filter or exit if that fails
-		guard let outputImage = currentFilter.outputImage else { return }
-		
-		// attempt to get a CGImage from our CIImage
-		if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-			// convert that to a UIImage
-			let uiImage = UIImage(cgImage: cgimg)
-			
-			// and convert that to a SwiftUI image
-			image = Image(uiImage: uiImage)
-		}
+		let imageSaver = ImageSaver()
+		imageSaver.writeToPhotoAlbum(image: inputImage)
 	}
 }
 
@@ -53,8 +40,8 @@ extension ContentView {
 				self.showingImagePicker = true
 			}
 		}
-		.sheet(isPresented: $showingImagePicker) {
-			ImagePicker()
+		.sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+			ImagePicker(image: self.$inputImage)
 		}
 	}
 }
@@ -62,5 +49,16 @@ extension ContentView {
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContentView()
+	}
+}
+
+// MARK: - Image saver
+class ImageSaver: NSObject {
+	func writeToPhotoAlbum(image: UIImage) {
+		UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+	}
+	
+	@objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+		print("Save finished!")
 	}
 }

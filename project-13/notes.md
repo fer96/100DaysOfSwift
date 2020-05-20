@@ -20,3 +20,8 @@
 * Wrapping a __UIKit__ view controller requires us to create a struct that conforms to the __UIViewControllerRepresentable__ protocol
 * __makeUIViewController()__ is responsible for creating the initial view controller
 * __updateUIViewController()__ is designed to let us update the view controller when some SwiftUI state changes
+
+## Using coordinators to manage SwiftUI view controllers
+
+* SwiftUI’s __coordinators__ are designed to act as delegates for UIKit view controllers. Remember, __delegates__ are objects that respond to events that occur elsewhere
+* SwiftUI’s __coordinators__ are nothing like the __coordinator pattern__ many developers used with UIKit
