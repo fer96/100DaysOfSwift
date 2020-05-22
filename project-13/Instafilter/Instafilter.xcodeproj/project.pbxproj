@@ -14,6 +14,7 @@
 		4C5035BF2472FEE900D5BF1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5035BE2472FEE900D5BF1C /* Preview Assets.xcassets */; };
 		4C5035C22472FEE900D5BF1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5035C02472FEE900D5BF1C /* LaunchScreen.storyboard */; };
 		4C5035CC2476D70E00D5BF1C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5035CB2476D70E00D5BF1C /* ImagePicker.swift */; };
+		4C5035CE24782C9A00D5BF1C /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5035CD24782C9A00D5BF1C /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4C5035C12472FEE900D5BF1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C5035C32472FEE900D5BF1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5035CB2476D70E00D5BF1C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		4C5035CD24782C9A00D5BF1C /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +63,12 @@
 				4C5035C32472FEE900D5BF1C /* Info.plist */,
 				4C5035B52472FEE700D5BF1C /* AppDelegate.swift */,
 				4C5035B92472FEE700D5BF1C /* ContentView.swift */,
+				4C5035CB2476D70E00D5BF1C /* ImagePicker.swift */,
+				4C5035CD24782C9A00D5BF1C /* ImageSaver.swift */,
 				4C5035B72472FEE700D5BF1C /* SceneDelegate.swift */,
 				4C5035BB2472FEE900D5BF1C /* Assets.xcassets */,
 				4C5035C02472FEE900D5BF1C /* LaunchScreen.storyboard */,
 				4C5035BD2472FEE900D5BF1C /* Preview Content */,
-				4C5035CB2476D70E00D5BF1C /* ImagePicker.swift */,
 			);
 			path = Instafilter;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				4C5035B62472FEE700D5BF1C /* AppDelegate.swift in Sources */,
 				4C5035CC2476D70E00D5BF1C /* ImagePicker.swift in Sources */,
+				4C5035CE24782C9A00D5BF1C /* ImageSaver.swift in Sources */,
 				4C5035B82472FEE700D5BF1C /* SceneDelegate.swift in Sources */,
 				4C5035BA2472FEE700D5BF1C /* ContentView.swift in Sources */,
 			);
