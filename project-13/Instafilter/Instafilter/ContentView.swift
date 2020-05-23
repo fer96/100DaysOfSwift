@@ -19,6 +19,8 @@ struct ContentView: View {
 	@State private var currentFilter: CIFilter = CIFilter.sepiaTone()
 	@State private var showingFilterSheet = false
 	@State private var processedImage: UIImage?
+	@State private var showingAlertError = false
+	@State private var currentFilterName = "Sepia Tone"
 	
 	let context = CIContext()
 }
@@ -93,14 +95,17 @@ extension ContentView {
 				}.padding(.vertical)
 				
 				HStack {
-					Button("Change Filter") {
+					Button("Change Filter: \(currentFilterName)") {
 						self.showingFilterSheet = true
 					}
 					
 					Spacer()
 					
 					Button("Save") {
-						guard let processedImage = self.processedImage else { return }
+						guard let processedImage = self.processedImage else {
+							self.showingAlertError = true
+							return
+						}
 						
 						let imageSaver = ImageSaver()
 						
@@ -125,15 +130,41 @@ extension ContentView {
 				
 			.actionSheet(isPresented: $showingFilterSheet) {
 				ActionSheet(title: Text("Select a filter"), buttons: [
-					.default(Text("Crystallize")) { self.setFilter(CIFilter.crystallize()) },
-					.default(Text("Edges")) { self.setFilter(CIFilter.edges()) },
-					.default(Text("Gaussian Blur")) { self.setFilter(CIFilter.gaussianBlur()) },
-					.default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate()) },
-					.default(Text("Sepia Tone")) { self.setFilter(CIFilter.sepiaTone()) },
-					.default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask()) },
-					.default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
+					.default(Text("Crystallize")) {
+						self.setFilter(CIFilter.crystallize())
+						self.currentFilterName = "Crystallize"
+					},
+					.default(Text("Edges")) {
+						self.setFilter(CIFilter.edges())
+						self.currentFilterName = "Edges"
+					},
+					.default(Text("Gaussian Blur")) {
+						self.setFilter(CIFilter.gaussianBlur())
+						self.currentFilterName = "Gaussian Blur"
+					},
+					.default(Text("Pixellate")) {
+						self.setFilter(CIFilter.pixellate())
+						self.currentFilterName = "Pixellate"
+					},
+					.default(Text("Sepia Tone")) {
+						self.setFilter(CIFilter.sepiaTone())
+						self.currentFilterName = "Sepia Tone"
+					},
+					.default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask())
+						self.currentFilterName = "Unsharp Mask"
+					},
+					.default(Text("Vignette")) {
+						self.setFilter(CIFilter.vignette())
+						self.currentFilterName = "Vignette"
+					},
 					.cancel()
 				])
+			}
+				
+			.alert(isPresented: $showingAlertError) { () -> Alert in
+				Alert(title: Text("Error"), message: Text("You must select an image before try it to save"), dismissButton: .default(Text("Ok"), action: {
+					self.showingAlertError = false
+				}))
 			}
 		}
 	}
