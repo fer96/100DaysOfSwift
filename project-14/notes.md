@@ -14,6 +14,6 @@
   * Whether to make the write atomic, which means “all at once”.
   * What character encoding to use.
 
-## Switching view states with enums
+## Integrating MapKit with SwiftUI
 
-*
+* MapKit gives us MKMapView, and as you can tell from the name this is a view not a controller

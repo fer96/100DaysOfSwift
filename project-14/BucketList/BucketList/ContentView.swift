@@ -7,75 +7,52 @@
 //
 
 import SwiftUI
-
-struct User: Identifiable, Comparable {
-	let id = UUID()
-	let firstName: String
-	let lastName: String
-	
-	static func < (lhs: User, rhs: User) -> Bool {
-		lhs.lastName < rhs.lastName
-	}
-}
-
-enum LoadingState {
-	case loading, success, failed
-}
-
-struct LoadingView: View {
-	var body: some View {
-		Text("Loading...")
-	}
-}
-
-struct SuccessView: View {
-	var body: some View {
-		Text("Success!")
-	}
-}
-
-struct FailedView: View {
-	var body: some View {
-		Text("Failed.")
-	}
-}
+import LocalAuthentication
 
 // MARK: - Properties
-
 struct ContentView: View {
-	let users = [
-		User(firstName: "Arnold", lastName: "Rimmer"),
-		User(firstName: "Kristine", lastName: "Kochanski"),
-		User(firstName: "David", lastName: "Lister"),
-		].sorted()
-	
-	var loadingState = LoadingState.loading
+	@State private var isUnlocked = false
 }
 
 // MARK: - Logic
-
 extension ContentView {
-	func getDocumentsDirectory() -> URL {
-		// find all possible documents directories for this user
-		let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+	func authenticate() {
+		let context = LAContext()
+		var error: NSError?
 		
-		// just send back the first one, which ought to be the only one
-		return paths[0]
+		// check whether biometric authentication is possible
+		if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+			// it's possible, so go ahead and use it
+			let reason = "We need to unlock your data."
+			
+			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+				// authentication has now completed
+				DispatchQueue.main.async {
+					if success {
+						// authenticated successfully
+						self.isUnlocked = true
+					} else {
+						// there was a problem
+					}
+				}
+			}
+		} else {
+			// no biometrics
+		}
 	}
 }
 
 // MARK: - View
 extension ContentView {
 	var body: some View {
-		Group {
-			if loadingState == .loading {
-				LoadingView()
-			} else if loadingState == .success {
-				SuccessView()
-			} else if loadingState == .failed {
-				FailedView()
+		VStack {
+			if self.isUnlocked {
+				Text("Unlocked")
+			} else {
+				Text("Locked")
 			}
 		}
+		.onAppear(perform: authenticate)
 	}
 }
 
