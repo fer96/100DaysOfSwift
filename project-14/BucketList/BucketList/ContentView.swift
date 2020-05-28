@@ -18,6 +18,8 @@ struct ContentView: View {
 	@State private var showingPlaceDetails = false
 	@State private var showingEditScreen = false
 	@State private var isUnlocked = false
+	@State private var alertTile = "Unknown"
+	@State private var alertMessage = "Missing place information."
 }
 
 // MARK: - Logic
@@ -61,12 +63,16 @@ extension ContentView {
 					if success {
 						self.isUnlocked = true
 					} else {
-						// error
+						self.showingPlaceDetails = true
+						self.alertTile = "Error!"
+						self.alertMessage = "Face ID does not match"
 					}
 				}
 			}
 		} else {
-			// no biometrics
+			self.showingPlaceDetails = true
+			self.alertTile = "Error!"
+			self.alertMessage = "You must be enroll your Face ID"
 		}
 	}
 }
@@ -118,7 +124,7 @@ extension ContentView {
 			}
 		}
 		.alert(isPresented: $showingPlaceDetails) {
-			Alert(title: Text(selectedPlace?.title ?? "Unknown"), message: Text(selectedPlace?.subtitle ?? "Missing place information."), primaryButton: .default(Text("OK")), secondaryButton: .default(Text("Edit")) {
+			Alert(title: Text(selectedPlace?.title ?? alertTile), message: Text(selectedPlace?.subtitle ?? alertMessage), primaryButton: .default(Text("OK")), secondaryButton: .default(Text("Edit")) {
 				/// edit this place
 				self.showingEditScreen = true
 				})
