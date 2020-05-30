@@ -28,9 +28,13 @@ extension ContentView {
 					.padding()
 					.autocapitalization(.none)
 				
-				List(usedWords, id: \.self) {
-					Image(systemName: "\($0.count).circle")
-					Text($0)
+				List(usedWords, id: \.self) { word in
+					HStack {
+						Image(systemName: "\(word.count).circle")
+						Text(word)
+					}
+					.accessibilityElement(children: .ignore)
+					.accessibility(label: Text("\(word), \(word.count) letters"))
 				}
 				
 				/// Score
@@ -38,15 +42,15 @@ extension ContentView {
 					Text("\(score) pts")
 				}
 			}
-			/// Title
+				/// Title
 				.navigationBarTitle(rootWord)
 				.onAppear(perform: startGame)
-			.navigationBarItems(leading:
-				Button("Restart Game") {
-					self.startGame()
-			})
-			
-			/// Alert
+				.navigationBarItems(leading:
+					Button("Restart Game") {
+						self.startGame()
+				})
+				
+				/// Alert
 				.alert(isPresented: $showingError) { () -> Alert in
 					Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("Ok")))
 			}
