@@ -8,28 +8,33 @@
 
 import SwiftUI
 
+class DelayedUpdater: ObservableObject {
+	var value = 0 {
+		willSet {
+			objectWillChange.send()
+		}
+	}
+	
+	init() {
+		for i in 1...10 {
+			DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)) {
+				self.value += 1
+			}
+		}
+	}
+}
+
 struct ContentView: View {
-	@State private var selectedTab = 0
+	@ObservedObject var updater = DelayedUpdater()
 	
 	var body: some View {
-		TabView(selection: $selectedTab) {
-			Text("Tab 1")
-				.onTapGesture {
-					self.selectedTab = 1
-			}
-			.tabItem {
-				Image(systemName: "star")
-				Text("One")
-			}
-			.tag(0)
-			
-			Text("Tab 2")
-				.tabItem {
-					Image(systemName: "star.fill")
-					Text("Two")
-			}
-			.tag(1)
-		}
+		Image("example")
+			.interpolation(.none)
+    .resizable()
+    .scaledToFit()
+    .frame(maxHeight: .infinity)
+    .background(Color.black)
+    .edgesIgnoringSafeArea(.all)
 	}
 }
 
