@@ -59,3 +59,23 @@ var value = 0 {
 
 @ObservedObject var updater = DelayedUpdater()
 ```
+
+## Creating context menus
+
+I have a few tips for you when working with context menus, to help ensure you give your users the best experience:
+
+* If you’re going to use them, use them in lots of places – it can be frustrating to press and hold on something only to find nothing happens.
+* Keep your list of options as short as you can – aim for three or less.
+* Don’t repeat options the user can already see elsewhere in your UI.
+
+## Scheduling local notifications
+
+We have two types of notifications to work with, and they differ depending on where they were created: local notifications are ones we schedule locally, and remote notifications (commonly called push notifications) are sent from a server somewhere.
+
+## Adding Swift package dependencies in Xcode
+
+If developers follow SemVer correctly, then they should:
+
+* Change the patch number when fixing a bug as long as it doesn’t break any APIs or add features.
+* Change the minor number when they added features that don’t break any APIs.
+* Change the major number when they do break APIs.
