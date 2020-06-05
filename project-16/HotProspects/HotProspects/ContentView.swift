@@ -7,53 +7,40 @@
 //
 
 import SwiftUI
-import UserNotifications
-import SamplePackage
 
-struct LNContentView: View {
-	
-	var body: some View {
-		VStack {
-			Button("Request Permission") {
-				UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-					if success {
-						print("All set!")
-					} else if let error = error {
-						print(error.localizedDescription)
-					}
-				}
-			}
-			
-			Button("Schedule Notification") {
-				let content = UNMutableNotificationContent()
-				content.title = "Feed the cat"
-				content.subtitle = "It looks hungry"
-				content.sound = UNNotificationSound.default
-				
-				// show this notification five seconds from now
-				let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-				
-				// choose a random identifier
-				let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-				
-				// add our notification request
-				UNUserNotificationCenter.current().add(request)
-			}
-		}
-	}
+// MARK: - Porperties
+struct ContentView: View {
+	var prospects = Prospects()
 }
 
-struct ContentView: View {
-	let possibleNumbers = Array(1...60)
-	
-	var results: String {
-		let selected = possibleNumbers.random(7).sorted()
-		let strings = selected.map(String.init)
-		return strings.joined(separator: ", ")
-	}
-	
+// MARK: - Logic
+extension ContentView {}
+
+// MARK: - View
+extension ContentView {
 	var body: some View {
-		Text(results)
+		TabView {
+			ProspectsView(filter: .none)
+				.tabItem {
+					Image(systemName: "person.3")
+					Text("Everyone")
+			}
+			ProspectsView(filter: .contacted)
+				.tabItem {
+					Image(systemName: "checkmark.circle")
+					Text("Contacted")
+			}
+			ProspectsView(filter: .uncontacted)
+				.tabItem {
+					Image(systemName: "questionmark.diamond")
+					Text("Uncontacted")
+			}
+			MeView()
+				.tabItem {
+					Image(systemName: "person.crop.square")
+					Text("Me")
+			}
+		}.environmentObject(prospects)
 	}
 }
 
