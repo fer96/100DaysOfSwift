@@ -13,10 +13,10 @@
 		4C34FBCE2486A0BD0027E7FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C34FBCD2486A0BD0027E7FC /* Assets.xcassets */; };
 		4C34FBD12486A0BD0027E7FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C34FBD02486A0BD0027E7FC /* Preview Assets.xcassets */; };
 		4C34FBD42486A0BD0027E7FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C34FBD22486A0BD0027E7FC /* LaunchScreen.storyboard */; };
-		4C34FBDD24894AE50027E7FC /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 4C34FBDC24894AE50027E7FC /* SamplePackage */; };
 		4C34FBDF248AA0400027E7FC /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C34FBDE248AA0400027E7FC /* ProspectsView.swift */; };
 		4C34FBE1248AA0600027E7FC /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C34FBE0248AA0600027E7FC /* MeView.swift */; };
 		4C34FBE3248AA2220027E7FC /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C34FBE2248AA2220027E7FC /* Prospect.swift */; };
+		4CD81242248C607E003862DA /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4CD81241248C607E003862DA /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C34FBDD24894AE50027E7FC /* SamplePackage in Frameworks */,
+				4CD81242248C607E003862DA /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 			);
 			name = HotProspects;
 			packageProductDependencies = (
-				4C34FBDC24894AE50027E7FC /* SamplePackage */,
+				4CD81241248C607E003862DA /* CodeScanner */,
 			);
 			productName = HotProspects;
 			productReference = 4C34FBC42486A0BB0027E7FC /* HotProspects.app */;
@@ -134,7 +134,7 @@
 			);
 			mainGroup = 4C34FBBB2486A0BB0027E7FC;
 			packageReferences = (
-				4C34FBDB24894AE50027E7FC /* XCRemoteSwiftPackageReference "SamplePackage" */,
+				4CD81240248C607E003862DA /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 4C34FBC52486A0BB0027E7FC /* Products */;
 			projectDirPath = "";
@@ -364,21 +364,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4C34FBDB24894AE50027E7FC /* XCRemoteSwiftPackageReference "SamplePackage" */ = {
+		4CD81240248C607E003862DA /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/SamplePackage";
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.0.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4C34FBDC24894AE50027E7FC /* SamplePackage */ = {
+		4CD81241248C607E003862DA /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C34FBDB24894AE50027E7FC /* XCRemoteSwiftPackageReference "SamplePackage" */;
-			productName = SamplePackage;
+			package = 4CD81240248C607E003862DA /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
