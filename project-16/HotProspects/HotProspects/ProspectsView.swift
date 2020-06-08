@@ -18,6 +18,7 @@ enum FilterType {
 struct ProspectsView: View {
 	@EnvironmentObject var prospects: Prospects
 	@State private var isShowingScanner = false
+	@State private var sortingByRecent = false
 	
 	let filter: FilterType
 	
@@ -105,11 +106,15 @@ extension ProspectsView {
 		NavigationView {
 			List {
 				ForEach(filteredProspects) { prospect in
-					VStack(alignment: .leading) {
-						Text(prospect.name)
-							.font(.headline)
-						Text(prospect.emailAddress)
-							.foregroundColor(.secondary)
+					HStack {
+						VStack(alignment: .leading) {
+							Text(prospect.name)
+								.font(.headline)
+							Text(prospect.emailAddress)
+								.foregroundColor(.secondary)
+						}
+						Spacer()
+						Image(systemName: prospect.isContacted ? "checkmark.circle" : "questionmark.diamond").foregroundColor(.secondary)
 					}
 					.contextMenu {
 						Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted" ) {
@@ -120,6 +125,15 @@ extension ProspectsView {
 							Button("Remind Me") {
 								self.addNotification(for: prospect)
 							}
+						}
+						
+						Button(self.sortingByRecent ? "Sorting by name" : "Sorting by most recent") {
+							if self.sortingByRecent {
+								self.prospects.people.reverse()
+							} else {
+								self.prospects.people.sort()
+							}
+							self.sortingByRecent.toggle()
 						}
 					}
 				}
@@ -132,7 +146,7 @@ extension ProspectsView {
 				Text("Scan")
 			})
 				.sheet(isPresented: $isShowingScanner) {
-					CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: self.handleScan)
+					CodeScannerView(codeTypes: [.qr], simulatedData: "Zaul Hudson\npaul@hackingwithswift.com", completion: self.handleScan)
 			}
 		}
 	}
