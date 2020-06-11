@@ -13,6 +13,8 @@
 		4CD81256248FDBFE003862DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD81255248FDBFE003862DA /* Assets.xcassets */; };
 		4CD81259248FDBFE003862DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD81258248FDBFE003862DA /* Preview Assets.xcassets */; };
 		4CD8125C248FDBFE003862DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD8125A248FDBFE003862DA /* LaunchScreen.storyboard */; };
+		4CD81264249284D9003862DA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD81263249284D9003862DA /* Card.swift */; };
+		4CD8126624928598003862DA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8126524928598003862DA /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		4CD81258248FDBFE003862DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4CD8125B248FDBFE003862DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CD8125D248FDBFE003862DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD81263249284D9003862DA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		4CD8126524928598003862DA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +60,14 @@
 		4CD8124E248FDBFB003862DA /* Flashzilla */ = {
 			isa = PBXGroup;
 			children = (
+				4CD8125D248FDBFE003862DA /* Info.plist */,
 				4CD8124F248FDBFB003862DA /* AppDelegate.swift */,
-				4CD81251248FDBFB003862DA /* SceneDelegate.swift */,
+				4CD81263249284D9003862DA /* Card.swift */,
+				4CD8126524928598003862DA /* CardView.swift */,
 				4CD81253248FDBFB003862DA /* ContentView.swift */,
+				4CD81251248FDBFB003862DA /* SceneDelegate.swift */,
 				4CD81255248FDBFE003862DA /* Assets.xcassets */,
 				4CD8125A248FDBFE003862DA /* LaunchScreen.storyboard */,
-				4CD8125D248FDBFE003862DA /* Info.plist */,
 				4CD81257248FDBFE003862DA /* Preview Content */,
 			);
 			path = Flashzilla;
@@ -149,6 +155,8 @@
 				4CD81250248FDBFB003862DA /* AppDelegate.swift in Sources */,
 				4CD81252248FDBFB003862DA /* SceneDelegate.swift in Sources */,
 				4CD81254248FDBFB003862DA /* ContentView.swift in Sources */,
+				4CD81264249284D9003862DA /* Card.swift in Sources */,
+				4CD8126624928598003862DA /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

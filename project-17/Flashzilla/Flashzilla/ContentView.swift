@@ -8,27 +8,37 @@
 
 import SwiftUI
 
+// MARK: - Properties
 struct ContentView: View {
-	
+	@State private var cards = [Card](repeating: Card.example, count: 10)
+}
+
+// MARK: - Logic
+extension ContentView {
+	func removeCard(at index: Int) {
+		cards.remove(at: index)
+	}
 }
 
 // MARK: - View
 extension ContentView {
 	var body: some View {
-		VStack {
-			Text("Hello, World!")
-				.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-					print("Moving to the background!")
-			}
-			
-			Text("Hello, World!")
-				.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-					print("Moving back to the foreground!")
-			}
-			
-			Text("Hello, World!")
-				.onReceive(NotificationCenter.default.publisher(for: UIApplication.userDidTakeScreenshotNotification)) { _ in
-					print("User took a screenshot!")
+		ZStack {
+			Image("background")
+				.resizable()
+				.scaledToFill()
+				.edgesIgnoringSafeArea(.all)
+			VStack {
+				ZStack {
+					ForEach(0..<cards.count, id: \.self) { index in
+						CardView(card: self.cards[index]) {
+							withAnimation {
+								self.removeCard(at: index)
+							}
+						}
+						.stacked(at: index, in: self.cards.count)
+					}
+				}
 			}
 		}
 	}
@@ -37,5 +47,13 @@ extension ContentView {
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContentView()
+	}
+}
+
+// MARK: - Stacked method
+extension View {
+	func stacked(at position: Int, in total: Int) -> some View {
+		let offset = CGFloat(total - position)
+		return self.offset(CGSize(width: 0, height: offset * 10))
 	}
 }
