@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C6DD12A2495CA45004DF780 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6DD1292495CA45004DF780 /* EditCards.swift */; };
 		4CD81250248FDBFB003862DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8124F248FDBFB003862DA /* AppDelegate.swift */; };
 		4CD81252248FDBFB003862DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD81251248FDBFB003862DA /* SceneDelegate.swift */; };
 		4CD81254248FDBFB003862DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD81253248FDBFB003862DA /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C6DD1292495CA45004DF780 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 		4CD8124C248FDBFB003862DA /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD8124F248FDBFB003862DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD81251248FDBFB003862DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				4CD81263249284D9003862DA /* Card.swift */,
 				4CD8126524928598003862DA /* CardView.swift */,
 				4CD81253248FDBFB003862DA /* ContentView.swift */,
+				4C6DD1292495CA45004DF780 /* EditCards.swift */,
 				4CD81251248FDBFB003862DA /* SceneDelegate.swift */,
 				4CD81255248FDBFE003862DA /* Assets.xcassets */,
 				4CD8125A248FDBFE003862DA /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 				4CD81250248FDBFB003862DA /* AppDelegate.swift in Sources */,
 				4CD81252248FDBFB003862DA /* SceneDelegate.swift in Sources */,
 				4CD81254248FDBFB003862DA /* ContentView.swift in Sources */,
+				4C6DD12A2495CA45004DF780 /* EditCards.swift in Sources */,
 				4CD81264249284D9003862DA /* Card.swift in Sources */,
 				4CD8126624928598003862DA /* CardView.swift in Sources */,
 			);
