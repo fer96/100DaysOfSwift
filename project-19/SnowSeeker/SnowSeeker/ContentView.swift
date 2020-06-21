@@ -10,6 +10,8 @@ import SwiftUI
 
 // MARK: - Properties
 struct ContentView: View {
+	@ObservedObject var favorites = Favorites()
+	
 	let resorts: [Resort] = Bundle.main.decode("resorts.json")
 }
 
@@ -39,6 +41,14 @@ extension ContentView {
 						Text("\(resort.runs) runs")
 							.foregroundColor(.secondary)
 					}
+					.layoutPriority(1)
+					
+					if self.favorites.contains(resort) {
+						Spacer()
+						Image(systemName: "heart.fill")
+							.accessibility(label: Text("This is a favorite resort"))
+							.foregroundColor(.red)
+					}
 				}
 			}
 			.navigationBarTitle("Resorts")
@@ -46,6 +56,7 @@ extension ContentView {
 			WelcomeView()
 		}
 		.phoneOnlyStackNavigationView()
+		.environmentObject(favorites)
 	}
 }
 
