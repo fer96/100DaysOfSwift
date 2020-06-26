@@ -23,6 +23,7 @@
 		4C51327124A3AA5B002993AB /* nssl0043.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C51326724A3AA5B002993AB /* nssl0043.jpg */; };
 		4C51327224A3AA5B002993AB /* nssl0033.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C51326824A3AA5B002993AB /* nssl0033.jpg */; };
 		4C51327324A3AA5B002993AB /* nssl0034.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C51326924A3AA5B002993AB /* nssl0034.jpg */; };
+		4C51327524A575A9002993AB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C51327424A575A9002993AB /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		4C51326724A3AA5B002993AB /* nssl0043.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0043.jpg; sourceTree = "<group>"; };
 		4C51326824A3AA5B002993AB /* nssl0033.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0033.jpg; sourceTree = "<group>"; };
 		4C51326924A3AA5B002993AB /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
+		4C51327424A575A9002993AB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				4C51325924A3A99B002993AB /* Info.plist */,
 				4C51324B24A3A998002993AB /* AppDelegate.swift */,
+				4C51327424A575A9002993AB /* DetailViewController.swift */,
 				4C51324D24A3A998002993AB /* SceneDelegate.swift */,
 				4C51324F24A3A998002993AB /* ViewController.swift */,
 				4C51325424A3A99B002993AB /* Assets.xcassets */,
@@ -189,6 +192,7 @@
 				4C51325024A3A998002993AB /* ViewController.swift in Sources */,
 				4C51324C24A3A998002993AB /* AppDelegate.swift in Sources */,
 				4C51324E24A3A998002993AB /* SceneDelegate.swift in Sources */,
+				4C51327524A575A9002993AB /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
