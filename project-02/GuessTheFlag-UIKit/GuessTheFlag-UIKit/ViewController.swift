@@ -19,6 +19,7 @@ class ViewController: UIViewController {
 	var countries = [String]()
 	var score = 0
 	var correctAnswer = 0
+	var numberOfQuestions = 0
 	
 	// MARK: - Life cycle
 	override func viewDidLoad() {
@@ -59,7 +60,7 @@ class ViewController: UIViewController {
 	private func askQuestion(action: UIAlertAction! = nil) {
 		countries.shuffle()
 		correctAnswer = Int.random(in: 0...2)
-		title = countries[correctAnswer].uppercased()
+		title = countries[correctAnswer].uppercased() + " - score: \(score)"
 		
 		button1.setImage(UIImage(named: countries[0]), for: .normal)
 		button2.setImage(UIImage(named: countries[1]), for: .normal)
@@ -69,13 +70,23 @@ class ViewController: UIViewController {
 	// MARK: IBActions
 	@IBAction func buttonTapped(_ sender: UIButton) {
 		var title: String
+		numberOfQuestions += 1
 		
-		if sender.tag == correctAnswer {
-			title = "Correct"
-			score += 1
+		if numberOfQuestions >= 10 {
+			title = "End game your final score is: \(score)"
+			if sender.tag == correctAnswer {
+				score += 1
+			} else {
+				score += -1
+			}
 		} else {
-			title = "Wrong"
-			score -= 1
+			if sender.tag == correctAnswer {
+				title = "Correct"
+				score += 1
+			} else {
+				title = "Wrong, thats the flag from \(countries[sender.tag].uppercased())"
+				score -= 1
+			}
 		}
 		
 		let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
