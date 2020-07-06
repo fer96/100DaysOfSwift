@@ -34,7 +34,7 @@ class ViewController: UITableViewController {
 		}
 	}
 	
-	private func startGame() {
+	@objc private func startGame() {
 		title = allWords.randomElement()
 		usedWords.removeAll(keepingCapacity: true)
 		tableView.reloadData()
@@ -42,6 +42,7 @@ class ViewController: UITableViewController {
 	
 	private func setupView() {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .redo, target: self, action: #selector(startGame))
 	}
 	
 	private func submit(_ answer: String) {
@@ -73,13 +74,11 @@ class ViewController: UITableViewController {
 			errorMessage = "You can't spell that word from \(title)"
 		}
 		
-		let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "OK", style: .default))
-		present(ac, animated: true)
+		presentAlertError(title: errorTitle, message: errorMessage)
 	}
 	
 	private func isPossible(word: String) -> Bool {
-		guard var tempWord = title?.lowercased() else { return false }
+		guard var tempWord = title?.lowercased(), tempWord != word else { return false }
 		
 		for letter in word {
 			if let position = tempWord.firstIndex(of: letter) {
@@ -97,11 +96,18 @@ class ViewController: UITableViewController {
 	}
 	
 	private func isReal(word: String) -> Bool {
+		guard word.count > 3 else { return false }
 		let checker = UITextChecker()
 		let range = NSRange(location: 0, length: word.utf16.count)
 		let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
 		
 		return misspelledRange.location == NSNotFound
+	}
+	
+	private func presentAlertError(title: String, message: String) {
+		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default))
+		present(ac, animated: true)
 	}
 	
 	@objc private func promptForAnswer() {
