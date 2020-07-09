@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 	
 	// MARK: - Properties
 	var viewsDictionary: [String: UIView]?
-	
+	var labels = [UILabel]()
 
 	// MARK: - Life cycle
 	override func viewDidLoad() {
@@ -53,6 +53,12 @@ class ViewController: UIViewController {
 		label5.text = "LABELS"
 		label5.sizeToFit()
 		
+		labels.append(label1)
+		labels.append(label2)
+		labels.append(label3)
+		labels.append(label4)
+		labels.append(label5)
+		
 		view.addSubview(label1)
 		view.addSubview(label2)
 		view.addSubview(label3)
@@ -61,14 +67,40 @@ class ViewController: UIViewController {
 		
 		viewsDictionary = ["label1": label1, "label2": label2, "label3": label3, "label4": label4, "label5": label5]
 		
-		setupLayout()
+		setupLayoutWithAnchors()
+//		setupLayout()
 	}
 	
 	private func setupLayout() {
+		let metrics = ["labelHeight": 88]
+		
 		for label in viewsDictionary!.keys {
 			view.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "H:|[\(label)]|", options: [], metrics: nil, views: viewsDictionary!))
 		}
+		
 		view.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "V:|[label1]-[label2]-[label3]-[label4]-[label5]", options: [], metrics: nil, views: viewsDictionary!))
+		view.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "V:|[label1(labelHeight@999)]-[label2(labelHeight)]-[label3(labelHeight)]-[label4(labelHeight)]-[label5(labelHeight)]->=10-|", options: [], metrics: metrics, views: viewsDictionary!))
+	}
+	
+	private func setupLayoutWithAnchors() {
+		var previous: UILabel?
+		
+		for label in labels {
+			label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
+			label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+			label.heightAnchor.constraint(equalToConstant: view.safeAreaLayoutGuide.layoutFrame.height * 0.10).isActive = true
+			
+			if let previous = previous {
+				// we have a previous label – create a height constraint
+				label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
+			} else {
+				// this is the first label
+				label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+			}
+			
+			// set the previous label to be the current one, for the next loop iteration
+			previous = label
+		}
 	}
 
 }
