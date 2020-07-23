@@ -156,6 +156,8 @@ class ViewController: UIViewController {
 				letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
 				letterButton.setTitle("WWW", for: .normal)
 				letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
+				letterButton.layer.borderWidth = 1.0
+				letterButton.layer.borderColor = UIColor.lightGray.cgColor
 				let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
 				letterButton.frame = frame
 				buttonsView.addSubview(letterButton)
@@ -190,6 +192,11 @@ class ViewController: UIViewController {
 				ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
 				present(ac, animated: true)
 			}
+		} else {
+			let ac = UIAlertController(title: "Error!", message: "Try whit another one", preferredStyle: .alert)
+			ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+			
+			present(ac, animated: true)
 		}
 	}
 	
