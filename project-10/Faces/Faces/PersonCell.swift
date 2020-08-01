@@ -13,4 +13,11 @@ class PersonCell: UICollectionViewCell {
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var name: UILabel!
 	
+	func setup(_ person: Person) {
+		name.text = person.name
+		imageView.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
+		imageView.layer.borderWidth = 2
+		imageView.layer.cornerRadius = 3
+		layer.cornerRadius = 7
+	}
 }
