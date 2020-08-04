@@ -13,6 +13,7 @@ class GameScene: SKScene {
 	// MARK: - Properties
 	var scoreLabel: SKLabelNode!
 	var editLabel: SKLabelNode!
+	let balls = ["ballRed", "ballBlue", "ballCyan", "ballGreen", "ballPurple", "ballYellow"]
 	
 	var score = 0 {
 		didSet {
@@ -42,7 +43,8 @@ class GameScene: SKScene {
 			if objects.contains(editLabel) {
 				editingMode.toggle()
 			} else {
-				let ball = SKSpriteNode(imageNamed: "ballRed")
+				let ballName = balls.randomElement()!
+				let ball = SKSpriteNode(imageNamed: ballName)
 				if objects.contains(editLabel) {
 					editingMode.toggle()
 				} else {
@@ -166,6 +168,11 @@ class GameScene: SKScene {
 	}
 	
 	private func destroy(ball: SKNode) {
+		if let fireParticles = SKEmitterNode(fileNamed: "FireParticles") {
+			fireParticles.position = ball.position
+			addChild(fireParticles)
+		}
+		
 		ball.removeFromParent()
 	}
 }

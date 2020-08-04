@@ -14,6 +14,7 @@
 		4C5DA84324D73A8B004D9CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5DA84124D73A8B004D9CB0 /* Main.storyboard */; };
 		4C5DA84524D73A8D004D9CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5DA84424D73A8D004D9CB0 /* Assets.xcassets */; };
 		4C5DA84824D73A8D004D9CB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5DA84624D73A8D004D9CB0 /* LaunchScreen.storyboard */; };
+		4C5DA85024D9DCD0004D9CB0 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4C5DA84F24D9DCD0004D9CB0 /* FireParticles.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4C5DA84424D73A8D004D9CB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C5DA84724D73A8D004D9CB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C5DA84924D73A8D004D9CB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C5DA84F24D9DCD0004D9CB0 /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				4C5DA84424D73A8D004D9CB0 /* Assets.xcassets */,
 				4C5DA84624D73A8D004D9CB0 /* LaunchScreen.storyboard */,
 				4C5DA84924D73A8D004D9CB0 /* Info.plist */,
+				4C5DA84F24D9DCD0004D9CB0 /* FireParticles.sks */,
 			);
 			path = Pachinko;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			files = (
 				4C5DA84324D73A8B004D9CB0 /* Main.storyboard in Resources */,
 				4C5DA83A24D73A8B004D9CB0 /* GameScene.sks in Resources */,
+				4C5DA85024D9DCD0004D9CB0 /* FireParticles.sks in Resources */,
 				4C5DA84524D73A8D004D9CB0 /* Assets.xcassets in Resources */,
 				4C5DA84824D73A8D004D9CB0 /* LaunchScreen.storyboard in Resources */,
 			);
