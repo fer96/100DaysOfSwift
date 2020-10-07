@@ -1,10 +1,6 @@
 # 100 Days of Swift
 
-// TODO: - Add a description of this repository
-
-## Flowchart
-
-// TODO: - Add flow chart of the repository
+A simple repository to help me learn and complete 100 days of swift and swift UI challenge.
 
 ## Summary
 
